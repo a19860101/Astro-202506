@@ -1,0 +1,50 @@
+---
+const title = 'My Blog'
+const posts = ['post1','post2','post3']
+const user = {
+	name: 'John',
+	mail: 'asdf@gmail.com'
+} 
+const products = [
+    {
+        name: 'iPhone 16 Pro',
+        price: 36900,
+        storage: '128GB' 
+    },
+    {
+        name: 'iPhone 16 Pro',
+        price: 40400,
+        storage: '256GB' 
+    },
+    {
+        name: 'iPhone 16 Pro',
+        price: 47400,
+        storage: '512GB' 
+    },
+]
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>{title}</div>
+    <div>
+        {
+            // products.map(function(data){return <div>{data.name}/{data.storage}:${data.price}</div>})
+            // products.map((data)=>{return <div>{data.name}/{data.storage}:${data.price}</div>})
+            products.map((data) => <div>{data.name}/{data.storage}:${data.price}</div> )
+        }
+    </div>
+    <div>
+        {
+            // posts.map(function(data){return <ul><li>{data}</li></ul>})
+            posts.map(data => <ul><li>{data}</li></ul>)
+        }
+    </div>
+</body>
+</html>
