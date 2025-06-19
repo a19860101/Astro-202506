@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths(){
+    return [
+        {params: {tag: 'astro'}},
+        {params: {tag: '測試'}},
+        {params: {tag: 'hello'}}
+    ]
+}
+
+const {tag} = Astro.params
+---
+<BaseLayout>
+    <div>{tag}</div>
+</Baselayout>
