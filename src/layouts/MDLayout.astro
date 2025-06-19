@@ -9,7 +9,7 @@ const {frontmatter} = Astro.props
             <img src={frontmatter.hero.src} alt={frontmatter.hero.alt} class="w-full h-full object-cover">
         </div>
         <h2>{frontmatter.title}</h2>
-        <div class="text-sm">發布日期:{frontmatter.pubDate}</div>
+        <div class="text-sm">發布日期:{frontmatter.pubDate.slice(0,10)}</div>
         <div class="text-sm">作者:{frontmatter.author}</div>
     </div>
     <slot />
