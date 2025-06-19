@@ -1,6 +1,8 @@
 ---
 import Navigator from "../components/Navigator.astro"
 import '../styles/global.css'
+
+const {pageTitle } = Astro.props
 ---
 <!DOCTYPE html>
 <html lang="zh-hant-tw">
@@ -8,11 +10,12 @@ import '../styles/global.css'
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Suguru">
-	<title>Astro</title>
+	<title>Astro - {pageTitle}</title>
 </head>
 <body>
 	<Navigator></Navigator>
     <main class="w-200 mx-auto">
+
         <slot></slot>
     </main>
 </body>

@@ -1,9 +1,18 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from '../../components/Card.astro'
+const title = '文章首頁'
+
+const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager:true}))
 ---
-<BaseLayout>
-    <ul>
+<BaseLayout pageTitle={title}>
+    <!-- <ul>
         <li><a href="/blog/posts/001">001</a></li>
         <li><a href="/blog/posts/002">002</a></li>
-    </ul>
+    </ul> -->
+    <section class="grid grid-cols-2 gap-5">
+    {
+        allPosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
+    }
+    </section>
 </BaseLayout>

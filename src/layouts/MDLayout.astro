@@ -1,8 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro"
 import "../styles/markdown.css"
+const {frontmatter} = Astro.props
 ---
 <BaseLayout>
+    <div class="mb-5">
+        <div class="h-50 overflow-hidden mb-5">
+            <img src={frontmatter.hero.src} alt={frontmatter.hero.alt} class="w-full h-full object-cover">
+        </div>
+        <h2>{frontmatter.title}</h2>
+        <div class="text-sm">發布日期:{frontmatter.pubDate}</div>
+        <div class="text-sm">作者:{frontmatter.author}</div>
+    </div>
     <slot />
     <a href="/blog" class="underline font-bold">文章列表</a>
 </BaseLayout>

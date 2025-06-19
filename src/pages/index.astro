@@ -2,10 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from '../components/Hero.astro'
 
-
+const heroImg = '/images/hero.jpg'
 ---
-<BaseLayout>
-	<Hero></Hero>
+<BaseLayout pageTitle="首頁">
+	<Hero img={heroImg}></Hero>
 	<section class="grid grid-cols-2 gap-5">
 		<div class="border border-slate-300 rounded-xl overflow-hidden">
 			<div class="aspect-video ">
