@@ -46,5 +46,41 @@ const products = [
             posts.map(data => <ul><li>{data}</li></ul>)
         }
     </div>
+    <script>
+
+        // const datas = ['apple','apple','egg','egg','egg','banana',['apple','egg',['egg','banana']]].flat(2);
+        // const uniqueData = new Set(datas)
+        // let uniqueDataArray = Array.from(uniqueData)
+        // let uniqueDataArray = [...uniqueData]
+
+        // console.log(uniqueDataArray)
+
+        // const u = uniqueDataArray.filter(post => post == 'egg')
+        // const u = uniqueDataArray.includes('asdf')
+        // console.log(u)
+
+
+        const posts = [
+            {
+                title: '001',
+                tags: ['apple','banana']
+            },
+            {
+                title: '002',
+                tags: ['banana','cat']
+            },
+            {
+                title: '003',
+                tags: ['banana', 'dog']
+            }
+        ]
+        const uniqueTags = [...new Set(posts.map(post => post.tags).flat())]
+        console.log(uniqueTags)
+
+        const filterPosts = posts.filter( post => post.tags.includes('dog'))
+
+        console.log(filterPosts)
+
+    </script>
 </body>
 </html>

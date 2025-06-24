@@ -4,12 +4,23 @@ import Card from '../../components/Card.astro'
 const title = '文章首頁'
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager:true}))
+allPosts.sort((b:any,a:any) => 
+    a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) ||
+    b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate)
+)
+const uniqueTags = [...new Set(allPosts.map((post:any) => post.frontmatter.tags).flat())]
 ---
 <BaseLayout pageTitle={title}>
     <!-- <ul>
         <li><a href="/blog/posts/001">001</a></li>
         <li><a href="/blog/posts/002">002</a></li>
     </ul> -->
+    <section class="flex gap-4 justify-center mb-5 flex-wrap">
+        {
+            uniqueTags.map(tag => <a href={`/tags/${tag}`} 
+            class="text-sm px-5 py-1 bg-amber-300 rounded-xl hover:bg-amber-500 duration-300">{tag}</a>)
+        }
+    </section>
     <section class="grid grid-cols-2 gap-5">
     {
         allPosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
