@@ -8,9 +8,13 @@ allPosts.sort((b:any,a:any) =>
     a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) ||
     b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate)
 )
+const featurePosts = allPosts.filter((post:any) => post.frontmatter.feature == true)
+featurePosts.length = 2
 const uniqueTags = [...new Set(allPosts.map((post:any) => post.frontmatter.tags).flat())]
 uniqueTags.length = 8
 const heroImg = '/images/hero.jpg'
+
+allPosts.length = 4
 ---
 <BaseLayout pageTitle="首頁">
 	<Hero img={heroImg}></Hero>
@@ -20,10 +24,18 @@ const heroImg = '/images/hero.jpg'
             class="text-sm px-5 py-1 bg-amber-300 rounded-xl hover:bg-amber-500 duration-300">{tag}</a>)
         }
     </section>
-	<section class="grid grid-cols-2 gap-5">
+	<h2 class="text-center text-3xl font-bold">推薦文章</h2>
+	<section class="grid grid-cols-2 gap-5 mb-5">
+		{
+			featurePosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
+		}
+	</section>
+	<h2 class="text-center text-3xl font-bold">最新文章</h2>
+	<section class="grid grid-cols-2 gap-5 mb-5">
 		{
 			allPosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
 		}
 	</section>
+	
 </BaseLayout>
 <!-- https://github.com/a19860101/Astro-202506 -->
