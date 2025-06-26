@@ -1,7 +1,8 @@
 ---
-const {url, data} = Astro.props
+import {fade, slide} from "astro:transitions";
+const {url, data, idx} = Astro.props
 ---
-<div class="border border-slate-300 rounded-xl overflow-hidden">
+<div class="border border-slate-300 rounded-xl overflow-hidden" transition:animate={slide({duration:`${idx*.5}s`})}>
     <div class="aspect-video ">
         <img src={data.hero.src} alt={data.hero.alt} class="w-full h-full object-cover">
     </div>

@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from '../components/Hero.astro'
 import Card from "../components/Card.astro";
 
+import { fade,slide } from "astro:transitions";
+
 const allPosts = Object.values(import.meta.glob('./blog/posts/*.md', {eager:true}))
 allPosts.sort((b:any,a:any) => 
     a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) ||
@@ -15,10 +17,11 @@ uniqueTags.length = 8
 const heroImg = '/images/hero.jpg'
 
 allPosts.length = 4
+
 ---
 <BaseLayout pageTitle="首頁">
 	<Hero img={heroImg}></Hero>
-	<section class="flex gap-4 justify-center mb-5 flex-wrap">
+	<section class="flex gap-4 justify-center mb-5 flex-wrap" >
         {
             uniqueTags.map(tag => <a href={`/tags/${tag}`} 
             class="text-sm px-5 py-1 bg-amber-300 rounded-xl hover:bg-amber-500 duration-300">{tag}</a>)
@@ -27,13 +30,13 @@ allPosts.length = 4
 	<h2 class="text-center text-3xl font-bold">推薦文章</h2>
 	<section class="grid grid-cols-2 gap-5 mb-5">
 		{
-			featurePosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
+			featurePosts.map((post:any, idx) => <Card url={post.url} data={post.frontmatter} idx={idx}></Card>)
 		}
 	</section>
 	<h2 class="text-center text-3xl font-bold">最新文章</h2>
 	<section class="grid grid-cols-2 gap-5 mb-5">
 		{
-			allPosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
+			allPosts.map((post:any, idx) => <Card url={post.url} data={post.frontmatter} idx={idx}></Card>)
 		}
 	</section>
 	

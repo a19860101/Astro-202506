@@ -23,7 +23,7 @@ const uniqueTags = [...new Set(allPosts.map((post:any) => post.frontmatter.tags)
     </section>
     <section class="grid grid-cols-2 gap-5">
     {
-        allPosts.map((post:any) => <Card url={post.url} data={post.frontmatter}></Card>)
+        allPosts.map((post:any,idx) => <Card url={post.url} data={post.frontmatter} idx={idx}></Card>)
     }
     </section>
 </BaseLayout>

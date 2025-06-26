@@ -1,7 +1,8 @@
 ---
+import { fade } from "astro:transitions"
 const {img} = Astro.props
 ---
-<header class="w-full aspect-video rounded-xl overflow-hidden mb-5">
+<header class="w-full aspect-video rounded-xl overflow-hidden mb-5"  transition:animate={fade({duration: '1s'})}>
     <!-- <img src="/images/hero.jpg" alt="" class="w-full h-full object-cover"> -->
     <img src={img} alt="">
 </header>
